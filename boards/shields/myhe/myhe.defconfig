@@ -1,4 +1,5 @@
 # Copyright (c) 2025 Joomin97
 # SPDX-License-Identifier: MIT
 
-# CONFIG_SHIELD_MYHE=y
+CONFIG_SHIELD_MYHE_LEFT=y
+CONFIG_SHIELD_MYHE_RIGHT=y
