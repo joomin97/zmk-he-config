@@ -24,7 +24,7 @@
         >;
     };
 
-    adc_channels {
+    he_adc:adc_channels {
         compatible = "zmk,adc-channels";
         #address-cells = <1>;
         #size-cells = <0>;
@@ -34,21 +34,21 @@
             zephyr.adc = <&adc>;
             zephyr.channel-id = <0>; //ADC0 -> GP26
         };
-        chan1:channel_1 {
-            label = "ADC_1_MUX_1";
-            zephyr.adc = <&adc>;
-            zephyr.channel-id = <1>; //ADC1 -> GP27
-        };
-        chan2:channel_2 {
-            label = "ADC_2_MUX_2";
-            zephyr.adc = <&adc>;
-            zephyr.channel-id = <2>; //ADC2 -> GP28
-        };
-        chan3:channel_3 {
-            label = "ADC_3_MUX_3";
-            zephyr.adc = <&adc>;
-            zephyr.channel-id = <3>; //ADC3 -> GP29
-        };
+        // chan1:channel_1 {
+        //     label = "ADC_1_MUX_1";
+        //     zephyr.adc = <&adc>;
+        //     zephyr.channel-id = <1>; //ADC1 -> GP27
+        // };
+        // chan2:channel_2 {
+        //     label = "ADC_2_MUX_2";
+        //     zephyr.adc = <&adc>;
+        //     zephyr.channel-id = <2>; //ADC2 -> GP28
+        // };
+        // chan3:channel_3 {
+        //     label = "ADC_3_MUX_3";
+        //     zephyr.adc = <&adc>;
+        //     zephyr.channel-id = <3>; //ADC3 -> GP29
+        // };
     };
 
     kscan0:kscan {
@@ -65,7 +65,7 @@
         // kscan-forwarder = <&kscanforward0>
 
         adc-per-group0 {
-            io-channels = <&chan0>;
+            io-channels = <&he_adc 0>;
             address-range-min = <0>;
             address-range-max = <15>;
         };
