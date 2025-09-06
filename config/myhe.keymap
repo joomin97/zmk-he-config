@@ -6,7 +6,7 @@
     keymap {
         compatible = "he,input-processor-keymap";
 
-        transform = <&default_transform>
+        transform = <&default_transform>;
 
         default_layer {
             //.overlay에서 정의한 8x8 매트릭스에 맞춰 64개 키를 정의합니다.
