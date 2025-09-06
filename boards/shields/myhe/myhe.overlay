@@ -31,7 +31,7 @@
         layer0 {
             input-processors = <&default_input_processor_keymap>;
         };
-    }
+    };
 
     // he_adc:adc_channels {
     //     compatible = "zmk,adc-channels";
