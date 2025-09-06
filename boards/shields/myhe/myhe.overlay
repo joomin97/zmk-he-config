@@ -66,8 +66,8 @@
 
         adc-per-group0 {
             io-channels = <&adc 0>;
-            address-range-min = <0>;
-            address-range-max = <15>;
+            address-range-min = <1>;
+            address-range-max = <16>;
         };
 
     };
