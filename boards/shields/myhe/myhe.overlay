@@ -24,14 +24,14 @@
         >;
     };
 
-    default_input_processor_keymap: input_processor_keymap {
-        compatible = "he,input-processor-keymap";
-        transform = <&default_transform>;
+    // default_input_processor_keymap: input_processor_keymap {
+    //     compatible = "he,input-processor-keymap";
+    //     transform = <&default_transform>;
 
-        layer0 {
-            input-processors = <&default_input_processor_keymap>;
-        };
-    };
+    //     layer0 {
+    //         input-processors = <&default_input_processor_keymap>;
+    //     };
+    // };
 
     // he_adc:adc_channels {
     //     compatible = "zmk,adc-channels";
