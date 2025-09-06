@@ -68,7 +68,7 @@
             io-channels = <&chan0>;
             address-range-min = <0>;
             address-range-max = <15>;
-        }
+        };
 
     };
 
