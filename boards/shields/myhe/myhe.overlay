@@ -24,7 +24,7 @@
         >;
     };
 
-    default_input_processor_keymap: input_processor-keymap {
+    default_input_processor_keymap: input_processor_keymap {
         compatible = "he,input-processor-keymap";
         transform = <&default_transform>;
 
