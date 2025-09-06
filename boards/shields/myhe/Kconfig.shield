@@ -1,0 +1,5 @@
+# Copyright (c) 2025 Joomin97
+# SPDX-License-Identifier: MIT
+
+config SHIELD_MYHE
+    def_bool $(shields_list_contains,myhe)

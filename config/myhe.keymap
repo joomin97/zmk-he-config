@@ -1,0 +1,20 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+/ {
+    keymap {
+        compatible = "he,input-processor-keymap";
+
+        transform = <&default_transform>
+
+        default_layer {
+            //.overlay에서 정의한 8x8 매트릭스에 맞춰 64개 키를 정의합니다.
+            // 아래는 Alice 배열 스타일의 예시입니다.
+            bindings = <
+                &kp Q       &kp W           &kp E           &kp R                   &kp T       &kp Y       &kp U           &kp I
+                &kp A       &kp S           &kp D           &kp F                   &kp G       &kp H       &kp J           &kp K
+            >;
+        };
+    };
+};
