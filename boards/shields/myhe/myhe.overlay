@@ -10,9 +10,17 @@
 
 / {
     chosen {
+        // zmk,physical-layout = &physical_layout0;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
     };
+
+    // physical_layout0: physical_layout_0 { // First physical layout, use different naming for other layouts
+    //     compatible = "zmk,physical-layout";
+    //     display-name = "Default Layout";
+    //     // kscan = <&kscan0>; // Label of the kscan node, optional if all layouts use the same
+    //     // transform = <&default_transform>; // Label of the matrix transform for this layout
+    // };
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
@@ -71,7 +79,7 @@
         address-to-read-delay = <5>;
         wait-period-idle = <5>;
         wait-period-press = <1>;
-        kscan-forwarder = <&kscanforward0>
+        kscan-forwarder = <&kscanforward0>;
 
         adc-per-group0 {
             io-channels = <&adc 0>;
