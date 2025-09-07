@@ -8,7 +8,6 @@
 #include <dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 
-#include <input/he_processors.dtsi>
 / {
     chosen {
         // zmk,physical-layout = &physical_layout0;
@@ -80,7 +79,7 @@
         address-to-read-delay = <5>;
         wait-period-idle = <5>;
         wait-period-press = <1>;
-        kscan-forwarder = <&kscanforward0>;
+        // kscan-forwarder = <&kscanforward0>;
 
         adc-per-group0 {
             io-channels = <&adc 0>;
