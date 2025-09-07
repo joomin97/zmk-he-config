@@ -71,7 +71,7 @@
         address-to-read-delay = <5>;
         wait-period-idle = <5>;
         wait-period-press = <1>;
-        // kscan-forwarder = <&kscanforward0>
+        kscan-forwarder = <&kscanforward0>
 
         adc-per-group0 {
             io-channels = <&adc 0>;
