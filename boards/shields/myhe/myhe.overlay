@@ -68,7 +68,12 @@
     //     // };
     // };
 
+    kscanforward0:kscanfowrd0 {
+        compatible = "he.kscan-forward";
+    };
+
     kscan0:kscan {
+        // compatible = "he,kscan-forwarder";
         compatible = "he,kscan-multiplexer";
         resolution = <12>;
         address-gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>, //S0 -> GP0
@@ -79,7 +84,7 @@
         address-to-read-delay = <5>;
         wait-period-idle = <5>;
         wait-period-press = <1>;
-        // kscan-forwarder = <&kscanforward0>;
+        kscan-forwarder = <&kscanforward0>;
 
         adc-per-group0 {
             io-channels = <&adc 0>;
