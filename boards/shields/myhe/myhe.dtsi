@@ -11,11 +11,11 @@
     #address-cells = <1>;
     #size-cells = <0>;
 
-    channel@0 {
-        compatible = "zmk,adc-input";
-        label = "ADC_CHANNEL_0";
-        zephyr,input-positive = <&gpio0 26>;
-    };
+    // channel@0 {
+    //     compatible = "zmk,adc-input";
+    //     label = "ADC_CHANNEL_0";
+    //     zephyr,input-positive = <&gpio0 26>;
+    // };
 
     channel@1 {
         compatible = "zmk,adc-input";
