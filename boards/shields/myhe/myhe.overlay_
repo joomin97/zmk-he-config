@@ -29,48 +29,46 @@
     kscan: kscan0 {
         compatible = "zmk,kscan-composite";
         wakeup-source;
-        rows = <1>;
-        columns = <1>;
+        rows = <2>;
+        columns = <8>;
         adc-direct {
-            kscan = <&kscan_adc>;
+            kscan = <&kscan_mux_adc>;
             row-offset = <0>;
             col-offset = <0>;
         };
     };
 
-    pulse_set_forwarder: pulse-set-forwarder {
-        compatible = "he,pulse-set-forwarder";
-    };
-
-    kscan_adc: kscan-adc {
-        compatible = "he,kscan-direct-pulsed";
+    kscan_mux_adc: kscan-mux-adc {
+        compatible = "he,kscan-multiplexer";
         resolution = <12>;
-        pulse-read;
-        // calibrate;
-        read-turn-on-time= <50>;
-        wait-period-idle= <5>;
-        wait-period-press= <1>;
-        kscan-forwarder = <&kscan_forwarder>;
-        pulse-set-forwarder= <&pulse_set_forwarder>;
-        kscan_adc_top: top {
-            enable-gpios= <&gpio0 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // GP5
-            switch-height = <3300>;
+        address-gpios = <&gpio0 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //S0 -> GP0
+                <&gpio0 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //S1 -> GP1
+                <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //S2 -> GP2
+                <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; //S3 -> GP3
 
-            first {
-                io-channels = <&adc 0>;
-                calibration-min = <2095>;
-                calibration-max = <3286>;
-            };
+        address-to-read-delay = <5>;
+        wait-period-idle = <5>;
+        wait-period-press = <1>;
+        kscan-forwarder = <&kscan_forwarder>;
+
+        channel_one {
+            io-channels = <&adc 1>;
+            address-range-min = <1>;
+            address-range-max = <16>;
         };
+
     };
 
     he_transform: he_transform {// mapping of he sensors before going to kscan-composite but with he,input-processor-matrix-offset applied
         compatible = "zmk,matrix-transform";
         status= "okay";
-        columns = <1>;
-        rows = <1>;
+        columns = <8>;
+        rows = <2>;
+        // |  HE1  |  HE2  |  HE3  |  |  HE3  |  HE2  |  HE1  |
+        // |  HE4  |  HE5  |  HE6  |  |  HE6  |  HE5  |  HE4  |
         map = <
-            RC(0,0)
+            RC(0,0) RC(0,1) RC(0,2)    RC(0,5) RC(0,6) RC(0,7)
+            RC(1,0) RC(1,1) RC(1,2)    RC(1,5) RC(1,6) RC(1,7)
         >;
     };
 
@@ -84,7 +82,7 @@
     he_listener: he-listener {
         compatible = "he,input-listener";
         status = "okay";
-        device = <&kscan_adc>;
+        device = <&kscan_mux_adc>;
 
         layer0 {
             layers = <0>;
