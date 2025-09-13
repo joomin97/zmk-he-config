@@ -5,7 +5,7 @@
 #include <input/he_processors.dtsi>
 #include <physical_layouts.dtsi>
 
-@pico_adc {
+&pico_adc {
     status = "okay";
 };
 // &adc {
