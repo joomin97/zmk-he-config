@@ -7,25 +7,22 @@
 
 &pico_adc {
     status = "okay";
+
+    adc_channel_0: adc_channel_0 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_0";
+        zephyr.code = <0>;
+    };
+
+    adc_channel_1: adc_channel_1 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_1";
+        zephyr.code = <1>;
+    };
+
+    adc_channel_2: adc_channel_2 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_2";
+        zephyr.code = <2>;
+    };
 };
-// &adc {
-//     status = "okay";
-
-//     adc_channel_0: adc_channel_0 {
-//         compatible = "zmk,adc-input";
-//         label = "ADC_CHANNEL_0";
-//         zephyr.code = <0>;
-//     };
-
-//     adc_channel_1: adc_channel_1 {
-//         compatible = "zmk,adc-input";
-//         label = "ADC_CHANNEL_1";
-//         zephyr.code = <1>;
-//     };
-
-//     adc_channel_2: adc_channel_2 {
-//         compatible = "zmk,adc-input";
-//         label = "ADC_CHANNEL_2";
-//         zephyr.code = <2>;
-//     };
-// };
