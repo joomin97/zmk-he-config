@@ -26,3 +26,8 @@
         zephyr.code = <2>;
     };
 };
+
+&he_pass {
+    kscan-passthrough-position = <2700>;
+    keymap-size = <12>;
+};
