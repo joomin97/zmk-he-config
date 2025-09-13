@@ -7,39 +7,21 @@
 &adc {
     statsu = "okay";
 
-    #address-cells = <1>;
-    #size-cells = <0>;
+    adc_channel_0: adc_channel_0 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_0";
+        zephyr.code = <0>;
+    };
 
-    channel@0 {
-        reg = <0>;
-        zephy,input-positive = <ADC_CH0>;
-        zephyr,gain = "ADC_GAIN_1_2";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
-        zephyr,resolution = <12>;
+    adc_channel_1: adc_channel_1 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_1";
+        zephyr.code = <1>;
     };
-    channel@1 {
-        reg = <1>;
-        zephy,input-positive = <ADC_CH1>;
-        zephyr,gain = "ADC_GAIN_1_2";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
-        zephyr,resolution = <12>;
-    };
-    channel@2 {
-        reg = <2>;
-        zephy,input-positive = <ADC_CH2>;
-        zephyr,gain = "ADC_GAIN_1_2";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
-        zephyr,resolution = <12>;
-    };
-    channel@3 {
-        reg = <3>;
-        zephy,input-positive = <ADC_CH3>;
-        zephyr,gain = "ADC_GAIN_1_2";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
-        zephyr,resolution = <12>;
+
+    adc_channel_2: adc_channel_2 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_2";
+        zephyr.code = <2>;
     };
 };
