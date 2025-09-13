@@ -52,7 +52,7 @@
         kscan-forwarder = <&kscan_forwarder>;
 
         channel_one {
-            io-channels = <@pico_adc 0>;
+            io-channels = <&pico_adc 0>;
             address-range-min = <1>;
             address-range-max = <16>;
         };
