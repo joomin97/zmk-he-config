@@ -26,14 +26,32 @@
         zmk,matrix_transform = &he_transform;
     };
 
+    kscan_gpio: kscan-gpio {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+
+        diode-direction = "col2row";
+        row-gpios
+            = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+        col-gpios
+            = <&gpio0 7 GPIO_ACTIVE_HIGH>
+            ;
+    };
+
     kscan: kscan0 {
         compatible = "zmk,kscan-composite";
         wakeup-source;
-        rows = <1>;
+        rows = <2>;
         columns = <1>;
+        gpio-matrix {
+            kscan = <&kscan_gpio>;
+            row-offset = <0>;
+            col-offset = <0>;
+        };
         adc-direct {
             kscan = <&kscan_adc>;
-            row-offset = <0>;
+            row-offset = <1>;
             col-offset = <0>;
         };
     };
@@ -71,6 +89,7 @@
         rows = <1>;
         map = <
             RC(0,0)
+            RC(1,0)
         >;
     };
 
