@@ -22,7 +22,7 @@
     //     // transform = <&default_transform>; // Label of the matrix transform for this layout
     // };
 
-    kscan : kscan0 {
+    kscan: kscan0 {
         compatible = "zmk,kscan-composite";
         wakeup-source;
         rows = <2>;
