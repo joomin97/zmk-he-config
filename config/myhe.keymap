@@ -16,3 +16,12 @@
         };
     };
 };
+
+&he_keymap {
+    layer0 {
+        input-processors = <
+            &he_pass 0 &he_pass 1 &he_pass 2        &he_pass 3 &he_pass 4  &he_pass 5
+            &he_pass 6 &he_pass 7 &he_pass 8        &he_pass 9 &he_pass 10 &he_pass 11
+        >;
+    };
+};

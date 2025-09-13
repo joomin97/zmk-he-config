@@ -3,6 +3,9 @@ if SHIELD_MYHE
 config ZMK_KEYBOARD_NAME
     default "MYHE"
 
+config INPUT
+    default y
+
 config ZMK_USB
     default y
 

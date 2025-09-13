@@ -11,7 +11,7 @@
 / {
     chosen {
         // zmk,physical-layout = &physical_layout0;
-        zmk,kscan = &kscan0;
+        zmk,kscan = &kscan;
         zmk,matrix_transform = &default_transform;
     };
 
@@ -22,58 +22,19 @@
     //     // transform = <&default_transform>; // Label of the matrix transform for this layout
     // };
 
-    default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform";
-        columns = <8>;
+    kscan : kscan0 {
+        compatible = "zmk,kscan-composite";
+        wakeup-source;
         rows = <2>;
-        map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7)
-            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7)
-        >;
+        columns = <8>;
+        adc-direct {
+            kscan = <&kscan_adc>;
+            row-offset = <0>;
+            col-offset = <0>;
+        };
     };
 
-    // default_input_processor_keymap: input_processor_keymap {
-    //     compatible = "he,input-processor-keymap";
-    //     transform = <&default_transform>;
-
-    //     layer0 {
-    //         input-processors = <&default_input_processor_keymap>;
-    //     };
-    // };
-
-    // he_adc:adc_channels {
-    //     compatible = "zmk,adc-channels";
-    //     #address-cells = <1>;
-    //     #size-cells = <0>;
-
-    //     chan0:channel_0 {
-    //         label = "ADC_0_MUX_0";
-    //         zephyr.adc = <&adc 0>;
-    //         zephyr.channel-id = <0>; //ADC0 -> GP26
-    //     };
-    //     // chan1:channel_1 {
-    //     //     label = "ADC_1_MUX_1";
-    //     //     zephyr.adc = <&adc>;
-    //     //     zephyr.channel-id = <1>; //ADC1 -> GP27
-    //     // };
-    //     // chan2:channel_2 {
-    //     //     label = "ADC_2_MUX_2";
-    //     //     zephyr.adc = <&adc>;
-    //     //     zephyr.channel-id = <2>; //ADC2 -> GP28
-    //     // };
-    //     // chan3:channel_3 {
-    //     //     label = "ADC_3_MUX_3";
-    //     //     zephyr.adc = <&adc>;
-    //     //     zephyr.channel-id = <3>; //ADC3 -> GP29
-    //     // };
-    // };
-
-    kscanforward0:kscanfowrd0 {
-        compatible = "he.kscan-forward";
-    };
-
-    kscan0:kscan {
-        // compatible = "he,kscan-forwarder";
+    kscan_mux_adc: kscan-mux-adc {
         compatible = "he,kscan-multiplexer";
         resolution = <12>;
         address-gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>, //S0 -> GP0
@@ -84,14 +45,45 @@
         address-to-read-delay = <5>;
         wait-period-idle = <5>;
         wait-period-press = <1>;
-        // kscan-forwarder = <&kscanforward0>;
+        kscan-forwarder = <&kscan_forwarder>;
 
-        adc-per-group0 {
+        channel_one {
             io-channels = <&adc 0>;
             address-range-min = <1>;
             address-range-max = <16>;
         };
 
+    };
+
+    he_transform: he_transform {// mapping of he sensors before going to kscan-composite but with he,input-processor-matrix-offset applied
+        compatible = "zmk,matrix-transform";
+        status= "okay";
+        columns = <8>;
+        rows = <2>;
+        // |  HE1  |  HE2  |  HE3  |  |  HE3  |  HE2  |  HE1  |
+        // |  HE4  |  HE5  |  HE6  |  |  HE6  |  HE5  |  HE4  |
+        map = <
+            RC(0,0) RC(0,1) RC(0,2)    RC(0,5) RC(0,6) RC(0,7)
+            RC(1,0) RC(1,1) RC(1,2)    RC(1,5) RC(1,6) RC(1,7)
+        >;
+    };
+
+    he_keymap: he-keymap {
+        compatible = "he,input-processor-keymap";
+        status= "okay";
+        #input-processor-cells = <1>;
+        transform = <&he_transform>;
+    };
+
+    he_listener: he-listener {
+        compatible = "he,input-listener";
+        status = "okay";
+        device = <&kscan_mux_adc>
+
+        layer0 {
+            layers = <0>;
+            input-processors = <&he_keymap 0>;
+        };
     };
 
 };
