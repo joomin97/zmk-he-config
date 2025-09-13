@@ -31,3 +31,7 @@
     kscan-passthrough-position = <2700>;
     keymap-size = <12>;
 };
+
+&rt_pass{
+    keymap-size = <12>;
+};
