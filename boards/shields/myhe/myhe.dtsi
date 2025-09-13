@@ -5,24 +5,19 @@
 #include <input/he_processors.dtsi>
 #include <physical_layouts.dtsi>
 
-&pico_adc {
+&adc {
     status = "okay";
 
-    adc_channel_0: adc_channel_0 {
-        compatible = "zmk,adc-input";
-        label = "ADC_CHANNEL_0";
-        zephyr.code = <0>;
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    channel@0 {
+        reg = <0>;
+        zephyr,input-positive = <&gpio0 26>;
+        zephyr,gain = "ADC_GAIN_1_2";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME(ADC_ACQ_TIME_MICROSECONDS, 10)>;
+        zephyr,resolution = <12>;
     };
 
-    adc_channel_1: adc_channel_1 {
-        compatible = "zmk,adc-input";
-        label = "ADC_CHANNEL_1";
-        zephyr.code = <1>;
-    };
-
-    adc_channel_2: adc_channel_2 {
-        compatible = "zmk,adc-input";
-        label = "ADC_CHANNEL_2";
-        zephyr.code = <2>;
-    };
 };

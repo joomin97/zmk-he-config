@@ -41,10 +41,10 @@
     kscan_mux_adc: kscan-mux-adc {
         compatible = "he,kscan-multiplexer";
         resolution = <12>;
-        address-gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>, //S0 -> GP0
-                <&gpio0 1 GPIO_ACTIVE_HIGH>, //S1 -> GP1
-                <&gpio0 2 GPIO_ACTIVE_HIGH>, //S2 -> GP2
-                <&gpio0 3 GPIO_ACTIVE_HIGH>; //S3 -> GP3
+        address-gpios = <&gpio0 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //S0 -> GP0
+                <&gpio0 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //S1 -> GP1
+                <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, //S2 -> GP2
+                <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; //S3 -> GP3
 
         address-to-read-delay = <5>;
         wait-period-idle = <5>;
@@ -52,7 +52,7 @@
         kscan-forwarder = <&kscan_forwarder>;
 
         channel_one {
-            io-channels = <&pico_adc 0>;
+            io-channels = <&adc 0>;
             address-range-min = <1>;
             address-range-max = <16>;
         };
