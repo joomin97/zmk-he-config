@@ -17,4 +17,10 @@
         zephyr,input-positive = <&gpio0 26>;
     };
 
+    channel@1 {
+        compatible = "zmk,adc-input";
+        label = "ADC_CHANNEL_1";
+        zephyr,input-positive = <&gpio0 27>;
+    };
+
 };

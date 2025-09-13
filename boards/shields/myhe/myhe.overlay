@@ -52,7 +52,7 @@
         kscan-forwarder = <&kscan_forwarder>;
 
         channel_one {
-            io-channels = <&adc 0>;
+            io-channels = <&adc 1>;
             address-range-min = <1>;
             address-range-max = <16>;
         };
