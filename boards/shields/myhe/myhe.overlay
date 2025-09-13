@@ -21,7 +21,7 @@
         rows = <2>;
         columns = <8>;
         adc-direct {
-            kscan = <&kscan_adc>;
+            kscan = <&kscan_mux_adc>;
             row-offset = <0>;
             col-offset = <0>;
         };
