@@ -6,7 +6,7 @@
 #include <physical_layouts.dtsi>
 
 &adc {
-    statsu = "okay";
+    status = "okay";
 
     adc_channel_0: adc_channel_0 {
         compatible = "zmk,adc-input";
