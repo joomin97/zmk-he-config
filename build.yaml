@@ -21,3 +21,4 @@
 include:
   - board: rpi_pico
     shield: myhe
+    snippet: zmk-usb-logging
