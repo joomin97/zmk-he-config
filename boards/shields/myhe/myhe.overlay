@@ -9,6 +9,16 @@
 #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 #include <input/he_processors.dtsi>
 
+&he_pass {
+    kscan-passthrough-position = <2700>;
+    keymap-size = <12>;
+};
+
+&rt_pass{
+    keymap-size = <12>;
+};
+
+
 / {
     chosen {
         // zmk,physical-layout = &physical_layout0;
