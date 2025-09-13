@@ -78,7 +78,7 @@
     he_listener: he-listener {
         compatible = "he,input-listener";
         status = "okay";
-        device = <&kscan_mux_adc>
+        device = <&kscan_mux_adc>;
 
         layer0 {
             layers = <0>;
