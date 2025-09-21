@@ -40,10 +40,6 @@
         zmk,matrix_transform = &he_transform;
     };
 
-    zephyr,user {
-        io-channels = <&adc 0>;
-    };
-
     kscan_gpio: kscan-gpio {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
