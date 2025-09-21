@@ -75,7 +75,7 @@
             switch-height = <3300>;
 
             first {
-                io-channels = <&adc 1>;
+                io-channels = <&adc 0>;
                 calibration-min = <2095>;
                 calibration-max = <3286>;
             };
