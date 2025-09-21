@@ -75,7 +75,7 @@
             switch-height = <3300>;
 
             first {
-                io-channels = <&adc 0>;
+                io-channels = <&adc 1>;
                 calibration-min = <2095>;
                 calibration-max = <3286>;
             };
@@ -114,16 +114,16 @@
 };
 
 &adc {
-    // status = "okay";
+    status = "okay";
 
-    #address-cells = <1>;
-    #size-cells = <0>;
+    // #address-cells = <1>;
+    // #size-cells = <0>;
 
-    channel@0 {
-        reg = <0>;
-        zephyr,gain = "ADC_GAIN_1";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-        zephyr,resolution = <12>;
-    };
+    // channel@0 {
+    //     reg = <0>;
+    //     zephyr,gain = "ADC_GAIN_1";
+    //     zephyr,reference = "ADC_REF_INTERNAL";
+    //     zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+    //     zephyr,resolution = <12>;
+    // };
 };
