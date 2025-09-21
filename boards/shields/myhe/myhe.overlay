@@ -18,21 +18,6 @@
     keymap-size = <12>;
 };
 
-&adc {
-    status = "okay";
-
-    #address-cells = <1>;
-    #size-cells = <0>;
-
-    channel@0 {
-        reg = <0>;
-        zephyr,gain = "ADC_GAIN_1";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-        zephyr,resolution = <12>;
-    };
-};
-
 / {
     chosen {
         // zmk,physical-layout = &physical_layout0;
