@@ -10,7 +10,7 @@
 #include <input/he_processors.dtsi>
 
 &he_pass {
-    kscan-passthrough-position = <2700>;
+    kscan-passthrough-position = <2300>;
     keymap-size = <12>;
 };
 
@@ -70,7 +70,7 @@
         wait-period-press= <1>;
         kscan-forwarder = <&kscan_forwarder>;
         pulse-set-forwarder= <&pulse_set_forwarder>;
-        
+
         kscan_adc_top: top {
             enable-gpios= <&gpio0 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // GP5
             switch-height = <3300>;
