@@ -6,7 +6,7 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/input/input-event-codes.h>
-#include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
+// #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 #include <input/he_processors.dtsi>
 
 &he_pass {
@@ -18,12 +18,30 @@
     keymap-size = <12>;
 };
 
+&adc {
+    status = "okay";
+
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+};
 
 / {
     chosen {
         // zmk,physical-layout = &physical_layout0;
         zmk,kscan = &kscan;
         zmk,matrix_transform = &he_transform;
+    };
+
+    zephyr,user {
+        io-channels = <&adc 0>;
     };
 
     kscan_gpio: kscan-gpio {

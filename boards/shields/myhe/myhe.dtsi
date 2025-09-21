@@ -1,21 +1,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 // #include <dt-bindings/he/mouse_forwarder.h>
 // #include <dt-bindings/he/gamepad_forwarder.h>
-#include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
+// #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 #include <input/he_processors.dtsi>
 #include <physical_layouts.dtsi>
 
-&adc {
-    status = "okay";
-
-    #address-cells = <1>;
-    #size-cells = <0>;
-
-    channel@0 {
-        reg = <0>;
-        zephyr,gain = "ADC_GAIN_1";
-        zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-        zephyr,resolution = <12>;
-    };
-};
