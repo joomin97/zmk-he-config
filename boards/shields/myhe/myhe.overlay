@@ -6,6 +6,7 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/pinctrl/rpi-pico-pinctrl-common.h>
 #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 #include <input/he_processors.dtsi>
 
@@ -19,10 +20,40 @@
 };
 
 / {
+    
     chosen {
         // zmk,physical-layout = &physical_layout0;
         zmk,kscan = &kscan;
         zmk,matrix_transform = &he_transform;
+    };
+
+    aliases {
+        adc-0 = &adc0;
+    };
+
+    adc0: adc@4000c000 {
+        compatible = "raspberrypi,pico-adc";
+        status = "okay";
+        #io-channel-cells = <1>;
+
+        pinctrl-0 = <&adc_default>;
+        pinctrl-names = "default";
+
+        channel@0 {
+            reg = <0>;
+            zephyr,input-positive = <&gpio26>;
+            acquistion-time-ns = <ADC_ACQ_TIME_DEFAULT>;
+            resolution = <12>;
+        };
+    };
+
+    pinctrl {
+        adc_default: adc_default_pins {
+            group1 {
+                pinmux = <RP2XXX_PINMUX(26, RP_PINCTRL_GPIO_FUNC_ADC)>;
+                bias-pull-up;
+            };
+        };
     };
 
     kscan_gpio: kscan-gpio {
@@ -75,7 +106,7 @@
             switch-height = <3300>;
 
             first {
-                io-channels = <&adc 1>;
+                io-channels = <&adc 0>;
                 calibration-min = <2095>;
                 calibration-max = <3286>;
             };
