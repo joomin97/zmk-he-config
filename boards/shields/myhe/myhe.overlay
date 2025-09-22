@@ -40,7 +40,7 @@
 
         channel@0 {
             reg = <0>;
-            zephyr,input-positive = <&gpio26>;
+            zephyr,input-positive = <&gpio0 26>;
             acquistion-time-ns = <ADC_ACQ_TIME_DEFAULT>;
             resolution = <12>;
         };
