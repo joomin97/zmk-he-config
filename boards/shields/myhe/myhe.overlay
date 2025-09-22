@@ -49,7 +49,7 @@
     pinctrl {
         adc_default: adc_default_pins {
             group1 {
-                pinmux = <RP2XXX_PINMUX(26, RP_PINCTRL_GPIO_FUNC_ADC)>;
+                pinmux = <RP2XXX_PINMUX(26, RP2_PINCTRL_GPIO_FUNC_NULL)>;
                 bias-pull-up;
             };
         };
