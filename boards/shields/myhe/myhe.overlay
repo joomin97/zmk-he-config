@@ -26,29 +26,6 @@
         zmk,matrix_transform = &he_transform;
     };
 
-    aliases {
-        adc-0 = &adc0;
-    };
-
-    adc0: adc@4000c000 {
-        compatible = "raspberrypi,pico-adc";
-        status = "okay";
-        #io-channel-cells = <1>;
-
-        #address-cells = <1>;
-        #size-cells = <0>;
-
-        pinctrl-0 = <&adc_default0>;
-        pinctrl-names = "default";
-
-        channel@0 {
-            reg = <0>;
-            zephyr,input-positive = <&gpio0 26>;
-            acquistion-time-ns = <ADC_ACQ_TIME_DEFAULT>;
-            resolution = <12>;
-        };
-    };
-
     pinctrl {
         adc_default0: adc_default_pins {
             group1 {
@@ -147,16 +124,19 @@
 };
 
 &adc {
+    compatible = "raspberrypi,pico-adc";
     status = "okay";
+    #io-channel-cells = <1>;
 
-    // #address-cells = <1>;
-    // #size-cells = <0>;
+    #address-cells = <1>;
+    #size-cells = <0>;
 
-    // channel@0 {
-    //     reg = <0>;
-    //     zephyr,gain = "ADC_GAIN_1";
-    //     zephyr,reference = "ADC_REF_INTERNAL";
-    //     zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-    //     zephyr,resolution = <12>;
-    // };
+    channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,input-positive = <&gpio0 26>;
+        acquistion-time-ns = <ADC_ACQ_TIME_DEFAULT>;
+        resolution = <12>;
+    };
 };
