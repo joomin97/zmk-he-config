@@ -35,7 +35,7 @@
         status = "okay";
         #io-channel-cells = <1>;
 
-        pinctrl-0 = <&adc_default>;
+        pinctrl-0 = <&adc_default0>;
         pinctrl-names = "default";
 
         channel@0 {
@@ -47,7 +47,7 @@
     };
 
     pinctrl {
-        adc_default: adc_default_pins {
+        adc_default0: adc_default_pins {
             group1 {
                 pinmux = <ADC_CH0_P26>;
                 bias-pull-up;
