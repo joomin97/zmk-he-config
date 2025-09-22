@@ -137,6 +137,6 @@
         zephyr,reference = "ADC_REF_INTERNAL";
         zephyr,input-positive = <ADC_CH0_P26>;
         zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-        resolution = <12>;
+        // resolution = <12>;
     };
 };
