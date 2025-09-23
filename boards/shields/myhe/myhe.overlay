@@ -133,6 +133,7 @@
 
     #address-cells = <1>;
     #size-cells = <0>;
+
     channel@0 {
         reg = <0>;
         zephyr,gain = "ADC_GAIN_1_2";
@@ -141,4 +142,5 @@
         zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
         zephyr,resolution = <12>;
     };
-
+    
+};
