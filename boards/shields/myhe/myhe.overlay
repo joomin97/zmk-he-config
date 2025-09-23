@@ -10,7 +10,7 @@
 #include <input/he_processors.dtsi>
 
 &he_pass {
-    kscan-passthrough-position = <2300>;
+    kscan-passthrough-position = <2700>;
     keymap-size = <12>;
 };
 
@@ -30,7 +30,7 @@
         adc_default0: adc_default_pins {
             group1 {
                 pinmux = <ADC_CH0_P26>;
-                bias-pull-up;
+                // bias-pull-up;
             };
         };
     };
@@ -135,7 +135,7 @@
     #size-cells = <0>;
     channel@0 {
         reg = <0>;
-        zephyr,gain = "ADC_GAIN_1";
+        zephyr,gain = "ADC_GAIN_1_2";
         zephyr,reference = "ADC_REF_INTERNAL";
         zephyr,input-positive = <0>;
         zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
