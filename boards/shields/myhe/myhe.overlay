@@ -29,8 +29,8 @@
     pinctrl {
         adc_default0: adc_default_pins {
             group1 {
-                pinmux = <ADC_CH0_P26>;
-                bias-pull-up;
+                pinmux = <ADC0_SEL>;
+                // bias-pull-up;
             };
         };
     };
@@ -128,14 +128,17 @@
     status = "okay";
     #io-channel-cells = <1>;
 
+    pinctrl-0 = <&adc_default0>;
+    pinctrl-names = "default";
+
     #address-cells = <1>;
     #size-cells = <0>;
 
     channel@0 {
         reg = <0>;
-        zephyr,gain = "ADC_GAIN_2";
+        zephyr,gain = "ADC_GAIN_1";
         zephyr,reference = "ADC_REF_INTERNAL";
-        zephyr,input-positive = <ADC_CH0_P26>;
+        zephyr,input-positive = <0>;
         zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
         zephyr,resolution = <12>;
     };
