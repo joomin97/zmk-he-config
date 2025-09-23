@@ -29,7 +29,7 @@
     pinctrl {
         adc_default0: adc_default_pins {
             group1 {
-                pinmux = <ADC0_SEL>;
+                pinmux = <ADC_CH0_P26>;
                 // bias-pull-up;
             };
         };
