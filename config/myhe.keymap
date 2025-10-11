@@ -10,8 +10,8 @@
             //.overlay에서 정의한 8x8 매트릭스에 맞춰 64개 키를 정의합니다.
             // 아래는 Alice 배열 스타일의 예시입니다.
             bindings = <
-                &kp Q 
-                &kp A
+                &kp q 
+                &kp a
             >;
         };
     };
